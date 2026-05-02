@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temmys Grading System</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row nav">
+            <!-- <div class="col-md-1 col-sm-3 logo">
+                <img src="images/logo.png">
+            </div> -->
+            <div class="col-md-11 col-sm-8">
+                <h1>TEMMYS COLLEGE</h1>
+                <!-- <p><em>...greater heights!</em></p> -->
+            </div>
+        </div>
+        <!-- banner -->
+        
+            <div class="row banner">
+                <div class="row overlay align-items-center">
+                    <div class="col-8 align-items-center">
+                            <h1>2026 PROMOTIONAL EXAMINATION</h1>
+                            <h3>Academic Grade Sheet</h3>
+                    </div>
+                </div>
+            </div>
+        
+        
+
+        <!-- name form -->
+        <div class="row name_form py-3">
+            <div class="col-md-10 offset-md-1 card">
+                <h6>Fill in your details</h6><hr>
+                <form class="row card-body justify-content-around">
+                    <div class="col-6">
+                        <label for="name">Student's Name</label>
+                        <input type="text" name="name" id="name" class="form-control" onchange="
+                             var name = document.getElementById('name').value;
+                             document.getElementById('stu_name').innerHTML = name;
+                        ">
+                    </div>
+                    <div class="col-6">
+                        <label for="class">Class</label>
+                        <input type="text" name="class" id="classi" class="form-control" onchange="
+                            var classi = document.getElementById('classi').value;
+                            document.getElementById('stu_class').innerHTML = classi;
+                        ">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Name display -->
+        <div class="row name_display py-3">
+            <div class="col-md-10 offset-md-1 card">
+                <h6>Student's Info</h6><hr>
+                <div class="row">
+                    <div class="col-5">
+                        <h5>Student's Name:</h5>
+                        <h5>Class:</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5 id="stu_name"> </h5>
+                        <h5 id="stu_class"> </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row scoresheet py-3">
+            <div class="col-md-10 offset-md-1 card pb-5">
+                <h6>Fill in your scores</h6><hr>
+                <table class="table table-striped" style="background-color: #093a3b;">
+                    <thead>
+                        <tr>
+                            <th class="table_head">Subjects</th>
+                            <th class="table_head">Scores</th>
+                            <th class="table_head">Grade</th>
+                        </tr>
+
+                        <tbody>
+                            <tr>
+                                <td class="table_body">English</td>
+                                <td><input type="number" id="english" class="form-control-md" max="100" min="0" onchange="
+                                    
+                                    grading(Number(this.value), 'eng_grade')
+                                "></td>
+                                <td><p id="eng_grade">--</p></td>
+                            </tr>
+                            <tr>
+                                
+                                <td class="table_body">Mathematics</td>
+                                <td><input type="number" id="maths" class="form-control-md" max="100" min="0" onchange="
+                                    
+                                    grading(Number(this.value), 'maths_grade')
+                                "></td>
+                                <td><p id="maths_grade">--</p></td>
+                            </tr>
+                            <tr>
+                                <td>Biology</td>
+                                <td><input type="number" id="bio" class="form-control-md" max="100" min="0" onchange="
+                                
+                                    grading(Number(this.value), 'bio_grade')
+                                "></td>
+                                <td><p id="bio_grade">--</p></td>
+                            </tr>
+                            <tr>
+                                <td>Civic Education</td>
+                                <td><input type="number" id="civic" class="form-control-md" max="100" min="0" onchange="
+                                    
+                                    grading(Number(this.value), 'civic_grade')
+                                "></td>
+                                <td id="civic_grade">--</td>
+                            </tr>
+                            <tr>
+                                <td>Physics</td>
+                                <td><input type="number" id="physics" class="form-control-md" max="100" min="0" onchange="
+                                    
+                                    grading(Number(this.value), 'physics_grade')
+                                "></td>
+                                <td id="physics_grade">--</td>
+                            </tr>
+                            <tr>
+                                <td>Chemistry</td>
+                                <td><input type="number" id="chem" class="form-control-md" max="100" min="0" onclick="
+                                    
+                                    grading(Number(this.value), 'chem_grade')
+                                "></td>
+                                <td id="chem_grade">--</td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+                <button type="button" class="btn btn-success" onclick="
+                    result();
+                ">GET RESULT</button>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div class="row py-3 result_section">
+            <div class="col-md-10 offset-md-1">
+                <div class="row card">
+                    <div class="col-12 card-body">
+                        <div>
+                            <h6>Result</h6><hr>
+                        </div>
+                        <div class="text-center">
+                            <h4 id="stu_name2">Student Name</h4>
+                            <h4 id="stu_class2">Class</h4><hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-center align-items-center justify-content-center">
+                                <h5 style="color: rgb(255, 209, 4);">Total</h5>
+                                <h5 id="total">--</h5>
+                            </div>
+                            <div class="col-6 text-center align-items-center justify-content-center">
+                                <h5 style="color: rgb(255, 209, 4);">Average</h5>
+                                <h5 id="average">--</h5>
+                            </div>
+                            <div class="col-md-6 offset-md-3 pt-3 align-items-center justify-content-center">
+                                <div class="row">
+                                <div class="col-2 offset-2"><img src="images/loading.png" alt="remark" id="rem_logo" class="img-fluid">
+                                </div>
+                                <div class="col-8 pt-2">
+                                <h3 id="remark" class="">...</h3>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row footer p-3 text-center">
+            <div class="col-12">
+                <p>&copy; 2026 Temmys College &nbsp; &nbsp; All Rights Reserved</p>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script>
+        // var english = Number(document.getElementById('english').value);
+
+        function grading (score, gradingId){
+            if (score > 100 || score < 0){
+                alert('Your score must be between 0 and 100')
+                return;
+            }
+
+            var grade;
+            switch (true) {
+                case (score < 40):
+                    grade = 'F';  break;
+                case (score < 45):
+                    grade = 'E'; break;
+                case (score < 50):
+                    grade = 'D'; break;
+                case (score < 60):
+                    grade = 'C'; break;
+                case (score < 69):
+                    grade = 'B'; break;
+                default:
+                    grade = 'A';
+            }
+            document.getElementById(gradingId).innerHTML = grade;
+        }
+        
+        function result (){
+        
+            var name = document.getElementById('name').value;
+            var classi = document.getElementById('classi').value;
+           
+            var english = document.getElementById('english').value;
+            var maths = document.getElementById('maths').value;
+            var bio = document.getElementById('bio').value;
+            var civic = document.getElementById('civic').value;
+            var physics = document.getElementById('physics').value;
+            var chem = document.getElementById('chem').value;
+             var total = Number(english) + Number(maths) + Number(physics) + Number(civic) + Number(chem) + Number(bio);
+             var average = total / 6;
+            
+
+            
+
+            document.getElementById('stu_name2').innerHTML = name;
+            document.getElementById('stu_class2').innerHTML = classi;
+            document.getElementById('total').innerHTML = total;
+            document.getElementById('average').innerHTML = average;
+           
+            if (average >= 50){
+                document.getElementById('rem_logo').src = 'images/check.png';
+                document.getElementById('remark').innerHTML = 'YOU PASSED!';
+            }else {
+                document.getElementById('rem_logo').src = 'images/multiply.png';
+                document.getElementById('remark').innerHTML = 'YOU FAILED!';
+            }
+        }
+
+
+       
+
+
+    </script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

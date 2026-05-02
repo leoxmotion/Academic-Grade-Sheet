@@ -1,0 +1,132 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    background-color: aliceblue;
+    /* padding: 10px; */
+}
+
+h1, h2, h3, h4, h5, h6, label{
+    font-family: "Zalando Sans Expanded", sans-serif;
+    font-weight: 700;
+}
+
+h1{ font-size: 3.5rem; }
+h2 {font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5{ font-size: 1.1rem; }
+h6 { font-size: 0.9rem;  }
+
+p, .table_head, td {
+     font-family: "Zalando Sans", sans-serif;
+}
+
+.nav {
+    background-color: #093a3b;
+    color: rgb(255, 209, 4);
+    align-items: center;
+    justify-content: center;
+    min-height: 75px;
+    border-bottom: 3px solid #6A0F1A;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+.nav h1 {
+    font-size: 1.8rem;
+    padding-top: 5px;
+    margin: 0px;
+    color: rgb(255, 209, 4);
+}
+.nav p {
+    padding: 0px;
+    margin: 0px;
+}
+
+.logo img{
+    width: 200px;
+}
+
+.banner{
+    display: flex;
+    height: 400px;
+    background-image: url(images/banner.jpg);
+    background-size: cover;
+    background-color: #0B2A5B;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-bottom: 3px solid #6A0F1A;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.6);
+    height: inherit;
+}
+
+.name_form {
+    background-color: aliceblue;
+    /* border-bottom: 3px solid #6A0F1A; */
+}
+.card{
+    border: 3px solid #6A0F1A;
+    background-color: #093a3b;
+    color: white;
+}
+.card h6, h1, h4{
+    padding-top: 20px;
+    margin-bottom: 0px;
+    color: rgb(255, 209, 4);
+}
+
+.card h5, label{
+    padding-bottom: 5px;
+}
+
+.name_display, .scoresheet, .result_section {
+    background-color: aliceblue;
+    border-bottom: 3px solid #6A0F1A;
+}
+
+
+#rem_logo {
+    width: 50px;
+}
+
+.table {
+    border: 3px solid #6A0F1A;
+    background-color: aliceblue;
+}
+th {
+    background-color: red;
+}
+
+.footer {
+     background-color: #093a3b;
+    color: gray;
+}
+
+
+
+@media (max-width: 576px) {
+    .nav h1 {font-size: 1.0rem;}
+    .logo img{
+    width: 100%;
+}
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
+  h5 {font-size: 0.7rem;}
+  label{ font-size: 0.8rem;}
+  p { font-size: 0.6rem; }
+
+  .banner{
+   
+    height: 300px;
+  }
+}
