@@ -86,58 +86,72 @@
                     <thead>
                         <tr>
                             <th class="table_head">Subjects</th>
-                            <th class="table_head">Scores</th>
+                            <th class="table_head">Test Score</th>
+                            <th class="table_head">Exam Score</th>
+                            <th class="table_head">Total Score</th>
                             <th class="table_head">Grade</th>
                         </tr>
 
                         <tbody>
                             <tr>
                                 <td class="table_body">English</td>
-                                <td><input type="number" id="english" class="form-control-md" max="100" min="0" onchange="
-                                    
-                                    grading(Number(this.value), 'eng_grade')
+                                <td><input type="number" id="english_test" class="form-control-md" max="40" min="0"></td>
+                                <td><input type="number" id="english" class="form-control-md" max="60" min="0" onchange="
+                                    var engtest = document.getElementById('english_test').value;
+                                    grading(Number(engtest), Number(this.value), 'eng_total', 'eng_grade')
                                 "></td>
+                                <td id="eng_total">--</td>
                                 <td id="eng_grade">--</td>
                             </tr>
                             <tr>
                                 
                                 <td class="table_body">Mathematics</td>
-                                <td><input type="number" id="maths" class="form-control-md" max="100" min="0" onchange="
-                                    
-                                    grading(Number(this.value), 'maths_grade')
+                                <td><input type="number" id="maths_test" class="form-control-md" max="40" min="0"></td>
+                                <td><input type="number" id="maths" class="form-control-md" max="60" min="0" onchange="
+                                    var mathtest = document.getElementById('maths_test').value;
+                                    grading(Number(mathtest), Number(this.value), 'maths_total','maths_grade')
                                 "></td>
+                                <td id="maths_total">--</td>
                                 <td id="maths_grade">--</td>
                             </tr>
                             <tr>
                                 <td>Biology</td>
-                                <td><input type="number" id="bio" class="form-control-md" max="100" min="0" onchange="
-                                
-                                    grading(Number(this.value), 'bio_grade')
+                                <td><input type="number" id="bio_test" class="form-control-md" max="40" min="0"></td>
+                                <td><input type="number" id="bio" class="form-control-md" max="60" min="0" onchange="
+                                    var biotest = document.getElementById('bio_test').value;
+                                    grading(Number(biotest), Number(this.value), 'bio_total', 'bio_grade')
                                 "></td>
+                                <td id="bio_total">--</td>
                                 <td id="bio_grade">--</td>
                             </tr>
                             <tr>
                                 <td>Civic Education</td>
-                                <td><input type="number" id="civic" class="form-control-md" max="100" min="0" onchange="
-                                    
-                                    grading(Number(this.value), 'civic_grade')
+                                <td><input type="number" id="civic_test" class="form-control-md" max="40" min="0"></td>
+                                <td><input type="number" id="civic" class="form-control-md" max="60" min="0" onchange="
+                                    var civictest = document.getElementById('civic_test').value;
+                                    grading(Number(civictest), Number(this.value), 'civic_total', 'civic_grade')
                                 "></td>
+                                <td id="civic_total">--</td>
                                 <td id="civic_grade">--</td>
                             </tr>
                             <tr>
                                 <td>Physics</td>
-                                <td><input type="number" id="physics" class="form-control-md" max="100" min="0" onchange="
-                                    
-                                    grading(Number(this.value), 'physics_grade')
+                                <td><input type="number" id="physics_test" class="form-control-md" max="40" min="0"></td>
+                                <td><input type="number" id="physics" class="form-control-md" max="60" min="0" onchange="
+                                    var physicstest = document.getElementById('physics_test').value;
+                                    grading(Number(physicstest), Number(this.value), 'physics_total', 'physics_grade')
                                 "></td>
+                                <td id="physics_total">--</td>
                                 <td id="physics_grade">--</td>
                             </tr>
                             <tr>
                                 <td>Chemistry</td>
-                                <td><input type="number" id="chem" class="form-control-md" max="100" min="0" onclick="
-                                    
-                                    grading(Number(this.value), 'chem_grade')
+                                <td><input type="number" id="chem_test" class="form-control-md" max="40" min="0"></td>
+                                <td><input type="number" id="chem" class="form-control-md" max="60" min="0" onchange="
+                                    var chemtest = document.getElementById('chem_test').value;
+                                    grading(Number(chemtest), Number(this.value), 'chem_total', 'chem_grade')
                                 "></td>
+                                <td id="chem_total">--</td>
                                 <td id="chem_grade">--</td>
                             </tr>
                         </tbody>
@@ -198,7 +212,9 @@
     <script>
         // var english = Number(document.getElementById('english').value);
 
-        function grading (score, gradingId){
+        function grading (test, exam, total, gradingId){ 
+            var score = test + exam;
+
             if (score > 100 || score < 0){
                 alert('Your score must be between 0 and 100')
                 return;
@@ -220,6 +236,7 @@
                     grade = 'A';
             }
             document.getElementById(gradingId).innerHTML = grade;
+            document.getElementById(total).innerHTML = score;
         }
         
         function result (){
@@ -233,7 +250,20 @@
             var civic = document.getElementById('civic').value;
             var physics = document.getElementById('physics').value;
             var chem = document.getElementById('chem').value;
-             var total = Number(english) + Number(maths) + Number(physics) + Number(civic) + Number(chem) + Number(bio);
+
+            var englishTest = document.getElementById('english_test').value;
+            var mathsTest = document.getElementById('maths_test').value;
+            var bioTest = document.getElementById('bio_test').value;
+            var civicTest = document.getElementById('civic_test').value;
+            var physicsTest = document.getElementById('physics_test').value;
+            var chemTest = document.getElementById('chem_test').value;
+
+             var total =    Number(english) + Number(englishTest) +
+                            Number(maths) + Number(mathsTest) +
+                            Number(physics) + Number(physicsTest) +
+                            Number(civic) + Number(civicTest) +
+                            Number(chem) + Number(chemTest) +
+                            Number(bio) + Number(bioTest);
              var average = total / 6;
             
 
